@@ -1,0 +1,39 @@
+{% load catalog_tags %}
+
+<!-- NAVIGATION BAR -->
+<div class="navbar navbar-inverse navbar-static-top" role="navigation" id="slide-nav">
+  <div class="container">
+    <a class="navbar-brand navbar-right" href="#">{{ app_name }}</a>
+    <div class="navbar-header">
+      <a class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+    </div>
+
+    <div>
+      <a href="#" class="toggle-nav btn btn-lg navbar-left" ><span class="glyphicon glyphicon-th-list"></span></a>
+
+      <form class="navbar-form navbar-right" role="form">
+        <div class="form-group">
+          <input type="search" placeholder="search" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+
+      <!-- Navigation Bar -->
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+
+        {% cart_box_menu request %}
+
+      </ul><!-- end navbar-nav -->
+
+     </div>
+  </div>
+</div>

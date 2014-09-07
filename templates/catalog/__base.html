@@ -1,0 +1,41 @@
+{% load staticfiles i18n %}
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    <title>
+      {% block title %}
+        {% if page_title %}{{ page_title }} - {% endif %}{{ app_name }}
+      {% endblock %}
+    </title>
+
+    {% block meta_tags %}{% endblock %}
+    {% block description %}{% endblock %}
+
+    <!-- Stylesheets -->
+    {% block stylesheets %}
+     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+      <link href="{{ STATIC_URL }}css/css.css" rel="stylesheet">
+    {% endblock %}
+
+    <!-- Javascript -->
+    {% block javascript %}
+      <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="{{ STATIC_URL }}js/js.js"></script>
+    {% endblock %}
+
+    <!-- For extra head tags -->
+    {% block extra_head %}{% endblock %}
+
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    {% include "catalog/_nav_inverse_static_top.html" %}
+
+    <!-- Site Wrapper -->
+    {% block site_wrapper %}{% endblock %}
+  </body>
+</html>

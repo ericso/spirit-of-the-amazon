@@ -1,0 +1,13 @@
+{% extends "catalog/__l_left_sidebar.html" %}
+
+{% block title %}
+  {{ page_title }} | {{ block.super }}
+{% endblock %}
+
+{% block side_menu %}
+  {{ block.super }}
+{% endblock %}
+
+{% block main_content %}
+  {% include "catalog/_welcome_page.html" %}
+{% endblock %}

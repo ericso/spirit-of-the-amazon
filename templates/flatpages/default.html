@@ -1,0 +1,14 @@
+{% extends "catalog/__l_left_sidebar.html" %}
+
+{% block title %}
+  {{ flatpage.title }} | {{ block.super }}
+{% endblock title %}
+
+{% block side_menu %}
+  {{ block.super }}
+{% endblock side_menu %}
+
+{% block main_content %}
+  <h1>{{ flatpage.title }}</h1>
+  {{ flatpage.content }}
+{% endblock main_content %}

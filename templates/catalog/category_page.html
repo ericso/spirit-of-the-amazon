@@ -1,0 +1,28 @@
+{% extends "catalog/__l_left_sidebar.html" %}
+
+{% block title %}
+  {{ page_title }} | {{ block.super }}
+{% endblock title %}
+
+{% block side_menu %}
+  {{ block.super }}
+{% endblock side_menu %}
+
+{% block main_content %}
+
+  <h1>{{ category.name }}</h1>
+  {{ category.description }}
+  <br/>
+  <br/>
+
+  {% for p in products %}
+  <div class="product_thumbnail">
+    <a href="{{ p.get_absolute_url }}">
+      <img src="{{ MEDIA_URL }}images/products/thumbnails/{{ p.image }}"alt="{{ p.name }}" class="bn" />
+      <br/>
+      {{ p.name }}
+    </a>
+  </div>
+  {% endfor %}
+
+{% endblock main_content %}
