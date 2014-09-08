@@ -10,9 +10,10 @@ from models import (
   Category,
   Product,
 )
+
 from forms import ProductAddToCartForm
 
-from cart.cart import add_to_cart
+import cart
 
 
 def set_context(request, context_dict):
@@ -70,7 +71,7 @@ def show_product(request, product_slug, template_name="catalog/product_page.html
     # check if posted data is valid
     if form.is_valid():
       # add to cart and redirect to cart page
-      add_to_cart(request)
+      cart.add_to_cart(request)
 
       # if test cookie worked, get rid of it
       if request.session.test_cookie_worked():

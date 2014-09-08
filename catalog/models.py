@@ -44,7 +44,10 @@ class Product(models.Model):
   price = models.DecimalField(max_digits=9, decimal_places=2)
   old_price = models.DecimalField(max_digits=9, decimal_places=2, blank=True, default=0.00)
 
-  image = models.CharField(max_length=64)
+  # TODO(eso) investigate better ways of storing images
+  # image = models.CharField(max_length=64)
+  image = models.ImageField(upload_to='product_images')
+
   is_active = models.BooleanField(default=True)
   is_bestseller = models.BooleanField(default=False)
   is_featured = models.BooleanField(default=False)

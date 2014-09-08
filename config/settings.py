@@ -31,7 +31,8 @@ STATICFILES_DIRS = (
   CATALOG_STATIC_URL,
 )
 
-MEDIA_URL = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -62,7 +63,6 @@ THIRD_PARTY_APPS = (
   'django_nose',
 )
 LOCAL_APPS = (
-  'preview',
   'catalog',
   'utils',
   'cart',
