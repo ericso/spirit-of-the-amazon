@@ -13,6 +13,9 @@ $(function() {
   // $('.toggle-nav').mouseleave(function() {
   //   toggleNav();
   // });
+
+  // Activate the product carousel
+  $('.carousel').carousel();
 });
 
 
