@@ -10,10 +10,10 @@ from models import (
   Category,
   Product,
 )
-
 from forms import ProductAddToCartForm
 
-import cart
+# from cart.cart import add_to_cart
+from cart import cart
 
 
 def set_context(request, context_dict):

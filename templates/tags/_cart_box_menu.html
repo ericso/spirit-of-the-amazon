@@ -8,7 +8,7 @@
 
     {% for item in cart_items %}
     <li>
-      <a href="/" id="menu-action-1">Cart item 1</a>
+      <a href="{{ item.get_absolute_url }}" id="{{ item.name }}">{{ item.name }}</a>
     </li>
     {% endfor %}
 
