@@ -1,0 +1,34 @@
+{% extends "catalog/__base.html" %}
+
+{% load catalog_tags %}
+
+{% block title %}
+  {{ site_name }}
+{% endblock title %}
+
+{% block site_wrapper %}
+<div id="site-wrapper">
+
+  <!-- Menu on the side -->
+  <div id="site-menu">
+    {% block side_menu %}
+      {% category_list request.path %}
+      <hr/>
+      <div class="cart_box">
+      {% cart_box request %}
+      </div>
+    {% endblock side_menu %}
+  </div><!-- #site-menu -->
+
+  <!-- Main content of site -->
+  <div class="container bs-docs-container">
+    <div class="row">
+      {% block main_content %}{% endblock main_content %}
+    </div>
+  </div>
+
+  <div class="footer"></div>
+
+
+</div><!-- #site-wrapper -->
+{% endblock site_wrapper %}

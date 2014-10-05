@@ -6,6 +6,8 @@ from django.shortcuts import (
 from django.template import Context
 from django.http import HttpResponseRedirect
 
+from config.settings import SITE_NAME
+
 from models import (
   Category,
   Product,
@@ -26,8 +28,10 @@ def set_context(request, context_dict):
 def catalog_home(request, template_name='catalog/catalog_page.html'):
   """Renders the catalog home view
   """
+
   context = set_context(request, Context({
-    'page_title': 'E-Commerce Store',
+    'page_title': SITE_NAME,
+    'categories': Category.objects.all(),
   }))
 
   return render(request, template_name, context)

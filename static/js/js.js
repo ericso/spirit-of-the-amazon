@@ -22,6 +22,8 @@ $(function() {
 /*========================================
 =            CUSTOM FUNCTIONS            =
 ========================================*/
+
+/* Uncomment the following to use hiding side menubar
 function toggleNav() {
   if ($('#site-wrapper').hasClass('show-nav')) {
     // Do things on Nav Close
@@ -33,3 +35,4 @@ function toggleNav() {
 
   //$('#site-wrapper').toggleClass('show-nav');
 }
+*/

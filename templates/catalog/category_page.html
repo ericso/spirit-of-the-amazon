@@ -1,4 +1,4 @@
-{% extends "catalog/__l_left_sidebar.html" %}
+{% extends "catalog/__l_no_sidebar.html" %}
 
 {% block title %}
   {{ page_title }} | {{ block.super }}
@@ -27,10 +27,12 @@
     <div class="carousel-inner">
       {% for product in products %}
       <div class="item {% if forloop.first %}active{% endif %}">
-        <img src="{{ product.image.url }}" alt="{{ product.name }}">
-        <div class="carousel-caption">
-          {{ product.description }}
-        </div>
+        <a href="{{ product.get_absolute_url }}">
+          <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <div class="carousel-caption">
+              {{ product.description }}
+            </div>
+        </a>
       </div>
       {% endfor %}
     </div>
