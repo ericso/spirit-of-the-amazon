@@ -1,3 +1,5 @@
+import logging
+
 from django.core import urlresolvers
 from django.shortcuts import (
   get_object_or_404,
@@ -28,11 +30,12 @@ def set_context(request, context_dict):
 def catalog_home(request, template_name='catalog/catalog_page.html'):
   """Renders the catalog home view
   """
-
-  context = set_context(request, Context({
+  logging.debug('SITE_NAME: %s' % SITE_NAME)
+  print('SITE_NAME: %s' % SITE_NAME)
+  context = set_context(request, {
     'page_title': SITE_NAME,
     'categories': Category.objects.all(),
-  }))
+  })
 
   return render(request, template_name, context)
 

@@ -120,6 +120,6 @@ USE_TZ = True
 
 # Site-specific meta information
 SITE_NAME = 'Spirit of the Amazon'
-SITE_ID = 4
+SITE_ID = 1
 META_KEYWORDS = 'Amazon, rain forest, photography, non-profit, selling'
 META_DESCRIPTION = 'Spirit of the Amazon is a non-profit site where photographers can sell their photographs of the Amazon'

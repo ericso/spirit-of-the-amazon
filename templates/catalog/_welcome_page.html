@@ -1,5 +1,5 @@
 <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
-<div id="blueimp-gallery" class="blueimp-gallery">
+<div id="blueimp-gallery" class="blueimp-gallery" data-use-bootstrap-modal="false">
   <!-- The container for the modal slides -->
   <div class="slides"></div>
   <!-- Controls for the borderless lightbox -->
@@ -9,6 +9,7 @@
   <a class="close">×</a>
   <a class="play-pause"></a>
   <ol class="indicator"></ol>
+
   <!-- The modal dialog, which will be used to wrap the lightbox content -->
   <div class="modal fade">
     <div class="modal-dialog">
@@ -23,6 +24,10 @@
             <i class="glyphicon glyphicon-chevron-left"></i>
             Previous
           </button>
+          <button type="button" class="btn btn-default center">
+            <i class="glyphicon glyphicon-info-sign"></i>
+            Product
+          </button>
           <button type="button" class="btn btn-primary next">
             Next
             <i class="glyphicon glyphicon-chevron-right"></i>
@@ -31,14 +36,16 @@
       </div>
     </div>
   </div>
+
 </div>
 
 <div id="links">
   {% with categories as cats %}
     {% for cat in cats %}
       {% for prod in cat.product_set.all %}
-        <a href="{{ prod.get_absolute_url }}" title="{{ prod.name }}" data-gallery>
-          <img src="{{ prod.image.url }}" alt="{{ prod.name }}">
+        <a href="{{ prod.image.url }}" title="{{ prod.name }}" data-gallery>
+        <!-- TODO(eso) create tiny images and use those for the img source here -->
+          <img src="{{ prod.thumbnail.url }}" alt="{{ prod.name }}">
         </a>
       {% endfor %}
     {% endfor %}

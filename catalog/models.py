@@ -47,6 +47,7 @@ class Product(models.Model):
   # TODO(eso) investigate better ways of storing images
   # image = models.CharField(max_length=64)
   image = models.ImageField(upload_to='product_images')
+  thumbnail = models.ImageField(upload_to='product_thumbnails')
 
   is_active = models.BooleanField(default=True)
   is_bestseller = models.BooleanField(default=False)
