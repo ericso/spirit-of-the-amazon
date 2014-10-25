@@ -78,6 +78,7 @@ MIDDLEWARE_CLASSES = (
   'django.contrib.messages.middleware.MessageMiddleware',
   'django.middleware.clickjacking.XFrameOptionsMiddleware',
   'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+  'SSLMiddleware.SSLRedirect',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -123,3 +124,7 @@ SITE_NAME = 'Spirit of the Amazon'
 SITE_ID = 1
 META_KEYWORDS = 'Amazon, rain forest, photography, non-profit, selling'
 META_DESCRIPTION = 'Spirit of the Amazon is a non-profit site where photographers can sell their photographs of the Amazon'
+
+# Change to True before deploying to production
+ENABLE_SSL = False
+
