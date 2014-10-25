@@ -16,9 +16,9 @@ from checkout.models import (
 from checkout.forms import CheckoutForm
 
 
-
 def get_checkout_url(request):
-  """ returns the URL from the checkout module for cart """
+  """Returns the URL from the checkout module for cart
+  """
   # use this for Google Checkout API:
   # return google_checkout.get_checkout_url(request)
 
