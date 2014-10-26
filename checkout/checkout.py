@@ -26,11 +26,7 @@ def get_checkout_url(request):
   return urlresolvers.reverse('checkout')
 
 def process(request):
-  """ takes a POST request containing valid order data; pings the payment gateway with the billing
-  information and returns a Python dictionary with two entries: 'order_number' and 'message' based on
-  the success of the payment processing. An unsuccessful billing will have an order_number of 0 and an error message,
-  and a successful billing with have an order number and an empty string message.
-
+  """Takes a POST request containing valid order data; pings the payment gateway with the billing information and returns a Python dictionary with two entries: 'order_number' and 'message' based on the success of the payment processing. An unsuccessful billing will have an order_number of 0 and an error message, and a successful billing with have an order number and an empty string message.
   """
   # Transaction results
   APPROVED = '1'
@@ -47,19 +43,27 @@ def process(request):
   amount = cart.cart_subtotal(request)
 
   results = {}
-
   response = authnet.do_auth_capture(amount=amount,
-                     card_num=card_num,
-                     exp_date=exp_date,
-                     card_cvv=cvv)
+                                     card_num=card_num,
+                                     exp_date=exp_date,
+                                     card_cvv=cvv)
   if response[0] == APPROVED:
     transaction_id = response[6]
     order = create_order(request, transaction_id)
-    results = {'order_number': order.id, 'message': u''}
+    results = {
+      'order_number': order.id,
+      'message': u''
+    }
   if response[0] == DECLINED:
-    results = {'order_number': 0, 'message': u'There is a problem with your credit card.'}
+    results = {
+      'order_number': 0,
+      'message': u'There is a problem with your credit card.'
+    }
   if response[0] == ERROR or response[0] == HELD_FOR_REVIEW:
-    results = {'order_number': 0, 'message': u'Error processing your order.'}
+    results = {
+      'order_number': 0,
+      'message': u'Error processing your order.'
+    }
   return results
 
 def create_order(request, transaction_id):

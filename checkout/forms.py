@@ -67,10 +67,8 @@ class CheckoutForm(forms.ModelForm):
       self.fields[field].widget.attrs['size'] = '30'
 
     self.fields['shipping_state'].widget.attrs['size'] = '3'
-    self.fields['shipping_state'].widget.attrs['size'] = '3'
     self.fields['shipping_zip'].widget.attrs['size'] = '6'
 
-    self.fields['billing_state'].widget.attrs['size'] = '3'
     self.fields['billing_state'].widget.attrs['size'] = '3'
     self.fields['billing_zip'].widget.attrs['size'] = '6'
 
