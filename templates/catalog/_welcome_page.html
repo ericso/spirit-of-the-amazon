@@ -1,53 +1,25 @@
-<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
-<div id="blueimp-gallery" class="blueimp-gallery" data-use-bootstrap-modal="false">
-  <!-- The container for the modal slides -->
-  <div class="slides"></div>
-  <!-- Controls for the borderless lightbox -->
-  <h3 class="title"></h3>
-  <a class="prev">‹</a>
-  <a class="next">›</a>
-  <a class="close">×</a>
-  <a class="play-pause"></a>
-  <ol class="indicator"></ol>
 
-  <!-- The modal dialog, which will be used to wrap the lightbox content -->
-  <div class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" aria-hidden="true">&times;</button>
-          <h4 class="modal-title"></h4>
-        </div>
-        <div class="modal-body next"></div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left prev">
-            <i class="glyphicon glyphicon-chevron-left"></i>
-            Previous
-          </button>
-          <button type="button" class="btn btn-default center">
-            <i class="glyphicon glyphicon-info-sign"></i>
-            Product
-          </button>
-          <button type="button" class="btn btn-primary next">
-            Next
-            <i class="glyphicon glyphicon-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div id="links">
+<!-- Display all pictures -->
+<div id="welcome_gallery">
+  <div class="row">
   {% with categories as cats %}
     {% for cat in cats %}
+      <div class="col-xs-6 col-md-3">
       {% for prod in cat.product_set.all %}
-        <a href="{{ prod.image.url }}" title="{{ prod.name }}" data-gallery>
+        <a href="{{ prod.image.url }}" title="{{ prod.name }}" class="thumbnail">
         <!-- TODO(eso) create tiny images and use those for the img source here -->
-          <img src="{{ prod.thumbnail.url }}" alt="{{ prod.name }}">
+          <img data-src="holder.js/100%x180" src="{{ prod.thumbnail.url }}" alt="{{ prod.name }}">
         </a>
+
+        {# if the the forloop counter is divisible by 4, close the <div> tag and open a new one #}
+        {% if forloop.counter|divisibleby:4 %}
+        </div>
+        <div class="col-xs-6 col-md-3">
+        {% endif %}
+
       {% endfor %}
+      </div>
     {% endfor %}
   {% endwith %}
+  </div>
 </div>
