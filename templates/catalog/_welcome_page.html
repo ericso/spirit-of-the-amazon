@@ -5,10 +5,10 @@
   {% with categories as cats %}
     {% for cat in cats %}
       <div class="col-xs-6 col-md-3">
-      {% for prod in cat.product_set.all %}
-        <a href="{{ prod.image.url }}" title="{{ prod.name }}" class="thumbnail">
+      {% for product in cat.product_set.all %}
+        <a href="{{ product.get_absolute_url }}" title="{{ product.name }}" class="thumbnail">
         <!-- TODO(eso) create tiny images and use those for the img source here -->
-          <img data-src="holder.js/100%x180" src="{{ prod.thumbnail.url }}" alt="{{ prod.name }}">
+          <img data-src="holder.js/100%x180" src="{{ product.image.url }}" alt="{{ product.name }}">
         </a>
 
         {# if the the forloop counter is divisible by 4, close the <div> tag and open a new one #}

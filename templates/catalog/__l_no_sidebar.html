@@ -13,10 +13,6 @@
   <div id="site-menu">
     {% block side_menu %}
       {% category_list request.path %}
-      <hr/>
-      <div class="cart_box">
-      {% cart_box request %}
-      </div>
     {% endblock side_menu %}
   </div><!-- #site-menu -->
 
