@@ -35,6 +35,7 @@ def catalog_home(request, template_name='catalog/catalog_page.html'):
   context = set_context(request, {
     'page_title': SITE_NAME,
     'categories': Category.objects.all(),
+    'active_categories': Category.objects.filter(is_active=True),
   })
 
   return render(request, template_name, context)

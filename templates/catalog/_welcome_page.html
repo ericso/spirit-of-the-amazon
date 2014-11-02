@@ -1,25 +1,24 @@
-
 <!-- Display all pictures -->
-<div id="welcome_gallery">
-  <div class="row">
-  {% with categories as cats %}
-    {% for cat in cats %}
-      <div class="col-xs-6 col-md-3">
-      {% for product in cat.product_set.all %}
-        <a href="{{ product.get_absolute_url }}" title="{{ product.name }}" class="thumbnail">
-        <!-- TODO(eso) create tiny images and use those for the img source here -->
-          <img data-src="holder.js/100%x180" src="{{ product.image.url }}" alt="{{ product.name }}">
-        </a>
+<div id="welcome_gallery" class="container">
 
-        {# if the the forloop counter is divisible by 4, close the <div> tag and open a new one #}
-        {% if forloop.counter|divisibleby:4 %}
-        </div>
-        <div class="col-xs-6 col-md-3">
-        {% endif %}
-
-      {% endfor %}
-      </div>
+{% with active_categories as cats %}
+  {% for cat in cats %}
+    <h3>
+      <a href="{{ cat.get_absolute_url }}" class="category">
+        {{ cat.name }}
+      </a>
+    </h3>
+    <hr/>
+    <ul class="row">
+    {% for product in cat.product_set.all %}
+    <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+      <a href="{{ product.get_absolute_url }}" title="{{ product.name }}" class="thumbnail">
+        <img class="img-responsive" data-src="holder.js/100%x180" src="{{ product.image.url }}" alt="{{ product.name }}">
+      </a>
+    </li>
     {% endfor %}
-  {% endwith %}
-  </div>
+    </ul>
+  {% endfor %}
+{% endwith %}
+
 </div>
