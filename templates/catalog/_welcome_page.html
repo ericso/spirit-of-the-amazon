@@ -2,23 +2,41 @@
 <div id="welcome_gallery" class="container">
 
 {% with active_categories as cats %}
+  <ul class="artist-list">
   {% for cat in cats %}
-    <h3>
-      <a href="{{ cat.get_absolute_url }}" class="category">
-        {{ cat.name }}
-      </a>
-    </h3>
-    <hr/>
-    <ul class="row">
-    {% for product in cat.product_set.all %}
-    <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-      <a href="{{ product.get_absolute_url }}" title="{{ product.name }}" class="thumbnail">
-        <img class="img-responsive" data-src="holder.js/100%x180" src="{{ product.image.url }}" alt="{{ product.name }}">
-      </a>
+    <li id="{{ cat.slug }}">
+      <div class="artist-photos">
+      {% for product in cat.product_set.all %}
+        {% if forloop.first %}
+          <span class="photo_container pc_l hero crop">
+            <a href="{{ product.get_absolute_url }}" title="{{ product.name }}">
+              <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            </a>
+          </span>
+        {% else %}
+          <span class="photo_container pc_m secondary crop">
+            <a href="{{ product.get_absolute_url }}" title="{{ product.name }}">
+              <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            </a>
+          </span>
+
+        {% endif %}
+      {% endfor %}
+      </div>
+
+      <div class="media">
+        <a class="media-left" href="#">
+          <img data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PGRlZnMvPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjEzLjQ2ODc1IiB5PSIzMiIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjY0eDY0PC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true" style="width: 64px; height: 64px;">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">{{ cat.name }}</h4>
+          <p>{{ cat.description }}</p>
+        </div>
+      </div>
+
     </li>
-    {% endfor %}
-    </ul>
   {% endfor %}
+  </ul>
 {% endwith %}
 
 </div>
