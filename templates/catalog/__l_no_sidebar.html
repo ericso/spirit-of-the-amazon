@@ -11,16 +11,16 @@
 
   <!-- Menu on the side -->
   <div id="site-menu">
-    {% block side_menu %}
-
-    {% endblock side_menu %}
+    {% block side_menu %}{% endblock side_menu %}
   </div><!-- #site-menu -->
+
+  <header>
+    {% block header %}{% endblock header %}
+  </header>
 
   <!-- Main content of site -->
   <div class="container bs-docs-container">
-    <div class="row">
-      {% block main_content %}{% endblock main_content %}
-    </div>
+    {% block main_content %}{% endblock main_content %}
   </div>
 
   <div class="footer"></div>
