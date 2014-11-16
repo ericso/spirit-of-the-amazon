@@ -37,7 +37,7 @@ class Product(models.Model):
   """
   name = models.CharField(max_length=255, unique=True)
   slug = models.SlugField(max_length=255, unique=True, help_text="Unique value for product page URL, created from name.")
-  brand = models.CharField(max_length=64)
+  # brand = models.CharField(max_length=64)
   sku = models.CharField(max_length=64)
 
   # TODO(eso) define "prices", dictionary of prices and date set
@@ -52,7 +52,7 @@ class Product(models.Model):
   is_active = models.BooleanField(default=True)
   is_bestseller = models.BooleanField(default=False)
   is_featured = models.BooleanField(default=False)
-  quantity = models.IntegerField()
+  # quantity = models.IntegerField()
   description = models.TextField()
   meta_keywords = models.CharField(max_length=255, help_text="Comma-delimited set of SEO keywords for meta tag")
   meta_description = models.CharField(max_length=255, help_text="Content for description meta tag")
